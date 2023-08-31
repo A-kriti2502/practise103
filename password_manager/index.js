@@ -109,12 +109,14 @@ function handleCheckboxChange(){
     allCheckbox.forEach((checkbox) => {
         if(checkbox.checked){
             checkCount++;
+            console.log("checkCount", checkCount)
         }
     });
     // special condition
-    if(passwordlength < checkCount){
+    if(passwordlength > checkCount){
         passwordlength = checkCount;
         hadleSlider();
+        console.log('less count')
     }
 }
 
@@ -133,12 +135,13 @@ copyBtn.addEventListener('click', () =>{
 })
 
 generatorBtn.addEventListener('click',()=>{
+    console.log("button triger")
     if(checkCount == 0) 
-        return ;
+        return "";
 
     if(passwordlength < checkCount){
         passwordlength = checkCount;
-        hadleSlider();
+        // hadleSlider();
     }
     console.log("starting the journey");
     // dealing with the slider 
@@ -146,27 +149,31 @@ generatorBtn.addEventListener('click',()=>{
 
     let arr = []; 
     if(uppercaseCheck.checked){
-        arr.push(generateUpperCase);
+        arr.push(generateUpperCase());
+        console.log('hsdhs')
     }
     if(lowercaseCheck.checked){
-        arr.push(generateLowerCase);
+        arr.push(generateLowerCase());
     }
     if(numberCheck.checked){
-        arr.push(generateRandomNumber);
+        arr.push(generateRandomNumber());
     }
     if(symbolCheck.checked){
-        arr.push(generateSymbol);
+        arr.push(generateSymbol());
+        console.log("arr",arr)
     }
     // compulsory addition
     for(let i=0; i<arr.length; i++){
-        password += arr[i]();
+        password += arr[i];
+        console.log("cumpolsary pass",password)
     }
     console.log("compulsory addition done");
     // remaning addition
-    for(let i=0; passwordlength-arr.length;i++){
+    for(let i=0; passwordlength-password.length > 0;i++){
         let randomIndex = getRandomInteger(0,arr.length);
         console.log("randomIndex" + randomIndex);
-        password += arr[randomIndex]();
+        password += arr[randomIndex];
+        console.log("pas>>>>>>>>>>>", password)
     }
     console.log("remaning addition done");
     // console.log(arr); 
