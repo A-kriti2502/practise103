@@ -15,7 +15,7 @@ const symbols = '~`!@#$%^&*()_-+={[}]|:;"<,>.?/';
 
 let password = "";
 let passwordlength = 10;
-let checkCount = 1;
+let checkCount = 0;
 // set strength circle color to grey
 
 hadleSlider();
@@ -24,15 +24,13 @@ hadleSlider();
 function hadleSlider(){
     inputSlider.value = passwordlength; 
     lengthDisplay.innerText = passwordlength;
-    // not working
 }
 function setIndicator(color){
-    indicator.computedStyleMap.backgroundColor = color;
-    // shadow
+    indicator.style.backgroundColor = color;
 }
 
 function getRandomInteger(min, max){
-    Math.floor(Math.random*(max-min)) + min;
+    return Math.floor(Math.random() * (max-min)) + min;
 }
 function generateRandomNumber(){
     return getRandomInteger(0,9);
@@ -66,7 +64,7 @@ function calculateStrength(){
         haslower = true;
     }
     
-    if(haslower || hasUpper && (hasSym || hasNum) && passwordlength >= 8){
+    if(haslower && hasUpper && (hasSym || hasNum) && passwordlength >= 8){
         setIndicator("#0f0");
     } else if(
         (haslower || hasUpper)&&
@@ -93,6 +91,19 @@ async function copyContent(){
     },2000);
 }
 
+function shufflePassword(array) {
+    //Fisher Yates Method
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        const temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+      }
+    let str = "";
+    array.forEach((el) => (str += el));
+    return str;
+}
+
 function handleCheckboxChange(){
     checkCount = 0;
     allCheckbox.forEach((checkbox) => {
@@ -107,6 +118,10 @@ function handleCheckboxChange(){
     }
 }
 
+allCheckbox.forEach((checkbox) => {
+    checkbox.addEventListener('change',handleCheckboxChange);
+})
+
 inputSlider.addEventListener('input',(e) => {
     passwordlength = e.target.value;
     hadleSlider();
@@ -118,15 +133,17 @@ copyBtn.addEventListener('click', () =>{
 })
 
 generatorBtn.addEventListener('click',()=>{
-    if(checkCount <= 0) return ;
+    if(checkCount == 0) 
+        return ;
 
     if(passwordlength < checkCount){
         passwordlength = checkCount;
         hadleSlider();
     }
-
+    console.log("starting the journey");
     // dealing with the slider 
     password = ""; //removed old password
+
     let arr = []; 
     if(uppercaseCheck.checked){
         arr.push(generateUpperCase);
@@ -144,5 +161,22 @@ generatorBtn.addEventListener('click',()=>{
     for(let i=0; i<arr.length; i++){
         password += arr[i]();
     }
+    console.log("compulsory addition done");
     // remaning addition
+    for(let i=0; passwordlength-arr.length;i++){
+        let randomIndex = getRandomInteger(0,arr.length);
+        console.log("randomIndex" + randomIndex);
+        password += arr[randomIndex]();
+    }
+    console.log("remaning addition done");
+    // console.log(arr); 
+    // shuffle the password
+    password = shufflePassword(Array.from(password));
+    console.log("shuffling done");
+    // show in the UI
+    passwordDisplay.value = password;
+    console.log("ui generated");
+    // console.log(password);
+    // calculate the strength
+    calculateStrength();
 })
