@@ -1,0 +1,33 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.main-container{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(116, 116, 215);
+}
+.word-main{
+    width: 50%;
+    height: 30%;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    background-color: #ffffff;
+    overflow: scroll;
+}
+.search-result{
+    display: flex;
+    flex-direction: column;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+}
