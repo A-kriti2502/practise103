@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>DONA</title>
+</head>
+<body>
+    <div class="main-container">
+        <div class="mode">
+            <button id="button-mode">Light mode</button>
+        </div>
+        <div class="form-container">
+            <!-- header -->
+            <div class="form-header">
+                <div class="header-left">
+                    <div class="purple-logo"></div>
+                    <div class="content-logo">
+                        <h3>Dona</h3>
+                        <p>Raise Tickect</p>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <i class="fa-solid fa-xmark mark" style="color: aliceblue;" ></i>
+                </div>
+            </div>
+            <!-- body -->
+            <form class="form-body" method="get" action="/submit.html">
+                <div>
+                    <h2>Raise Tickect</h2>
+                </div>
+                
+                <div class="form-body-details" method="post" action="/">
+                    <div>
+                        <label for="title" style="color: grey;">Title <span class="manadatory">*</span> </label><br>
+                        <input type="text" name="title" id="title-input" required>
+                        <p class="word-limit" id="title-limit"></p>
+                    </div>
+                    <div>
+                        <label for="description" style="color: grey;">Description <span class="manadatory">*</span> </label><br>
+                        <textarea  id="textarea-input" required></textarea>
+                        <p class="word-limit" id="textarea-limit"></p>
+                    </div>
+                    <div>
+                        <label for="department" style="color: grey;">Department <span class="manadatory">*</span> </label><br>
+                        <select name="department" id="" required>
+                            <option value="">select option</option>
+                            <option value="data science">data science</option>
+                            <option value="devops">devops</option>
+                            <option value="frontend">frontend</option>
+                            <option value="backend">backend</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="issue" style="color: grey;">Issue <span class="manadatory">*</span> </label><br>
+                        <select name="issue" id="" required>
+                            <option value="">select option</option>
+                            <option value="Attendence">Attendence</option>
+                            <option value="leave">leave</option>
+                            <option value="zoho">zoho</option>
+                            <option value="microsoft">microsoft</option>
+                        </select>
+                    </div>
+
+                    <div class="date-container">
+                        <div>
+                            <label for="calender" style="color: grey;">When was this issue encountered <span class="manadatory">*</span></label>
+                        </div>
+                        <div class="date-container-input">
+                            <input type="date" id="calendar" name="calender" class="calendar-input" required>
+                            <button class="cancel-button hidden" id="custom-date" >Custom date</button>
+                            <button class="cancel-button" id="current-date" >Today</button>
+                        </div>
+                    </div>
+
+                    <div>
+                        <p style="color: grey;">Impact of issue<span class="manadatory">*</span></p>
+                        <div class="imapact-radio">
+                            <input type="radio" id="age1" name="issue" value="impact only me" required>
+                            <label for="age1" class="text-radio">impact only me</label><br>
+                            <input type="radio" id="age2" name="issue" value="impact multiple individuals" required>
+                            <label for="age2" class="text-radio">impact multiple individuals</label><br>  
+                            <input type="radio" id="age3" name="issue" value="impact multiple teams" required>
+                            <label for="age3" class="text-radio">impact multiple teams</label><br>
+                            <input type="radio" id="age3" name="issue" value="impact whole organization" required>
+                            <label for="age3" class="text-radio">impact whole organization</label><br>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <p style="color: grey;">Urgency <span class="manadatory">*</span></p>
+                        <div class="urgent-radio">
+                            <input type="radio" id="age1" name="Urgency" value="low" required>
+                            <label for="age1">low</label><br>
+                            <input type="radio" id="age2" name="Urgency" value="medium" required>
+                            <label for="age2">medium</label><br>  
+                            <input type="radio" id="age3" name="Urgency" value="high" required>
+                            <label for="age3">high</label><br>
+                        </div>
+                        
+                    </div>
+                    <div>
+                        <label for="" style="color: grey; padding-bottom:3px;">Attachments (MAX 1MB/file)</label>
+                        <div class="drag-area">
+                            <h3>Drop files here</h3>
+                            <button>upload from computere</button>
+                            <input type="file" hidden required>
+                          </div>
+                    </div>
+                </div>
+                <div class="buttons">
+                    <button class="cancel-button">Cancel</button>
+                    <button id="submitButton" type="submit" class="submit-button">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="https://kit.fontawesome.com/de83210c92.js" crossorigin="anonymous"></script>
+    <script src="index.js"></script>
+</body>
+</html>
