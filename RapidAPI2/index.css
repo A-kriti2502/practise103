@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "poppins" , sans-serif;
+    font-weight: 700;
+}
+body{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.youtube-button{
+    padding: 20px;
+    color: #fff;
+    background-color: #cc181e;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1),0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+i{
+    font-size: 30px;
+    margin-right: 12px;
+}
+p{
+    font-size: 18px;
+}
+span{
+    margin-right: 4px;
+}
