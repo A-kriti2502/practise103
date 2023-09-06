@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form validation</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <h1>This is a form validation Example </h1>
+    <form action="submit.html" onsubmit="return validate()">
+        <div class="formsec">
+            <label for="name">Name:</label>
+            <input type="text" placeholder="Username" id="uname" name="name" required>
+            <label for="unameError" id="unameError" style="color: red; visibility: hidden;">invalid</label>
+        </div>
+
+        <div class="formsec">
+            <label for="password">Password:</label>
+            <input type="password" id="pass" placeholder="Password" name="password" required>
+            <label for="passwordError" id="passwordError" style="color: red; visibility: hidden;">invalid</label>
+        </div>
+
+        <div class="formsec">
+            <label for="email">Email:</label>
+            <input type="email" id="email" placeholder="email" name="email" required>
+            <label for="emailError" id="emailError" style="color: red; visibility: hidden;">invalid</label>
+        </div>
+
+        <div class="formsec">
+            <label for="mobile">Mobile:</label>
+            <input type="text" id="number" placeholder="mobile no" name="mobile" required>
+            <label for="mobileError" id="mobileError" style="color: red; visibility: hidden;">invalid</label>
+        </div>
+        <button type="submit" >Submit</button>
+    </form>
+    <script src="index.js"></script>
+</body>
+</html>
